@@ -1,0 +1,297 @@
+/* Custom CSS */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 0;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.college-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.college-logo img {
+  height: 150px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.my-logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.my-logo img {
+  height: 150px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.sport-tab {
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.sport-tab.active {
+  border-bottom: 3px solid #0d6efd;
+}
+
+.sport-content {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sport-content.active {
+  display: block;
+}
+
+.gender-content {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.gender-content.active {
+  display: block;
+}
+
+.gender-toggle-group {
+  margin-bottom: 1rem;
+}
+
+.fixture-card {
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.fixture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.fixture-header {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.fixture-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+}
+
+.football-header {
+  background-image: url("football.jpg");
+}
+
+.volleyball-header {
+  background-image: url("volleyball.png");
+}
+
+.basketball-header {
+  background-image: url("basketball.jpeg");
+}
+
+.futsal-header {
+  background-image: url("futsal.jpg");
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.fixture-details-icon {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.delete-btn, .update-score-btn {
+  position: absolute;
+  top: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.delete-btn {
+  right: 10px;
+}
+
+.update-score-btn {
+  right: 50px;
+  background-color: #0d6efd;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.update-score-btn:hover {
+  background-color: #0a58ca;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+  border-bottom: 2px solid #f0f0f0;
+  background-color: #f8f9fa;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-footer {
+  border-top: 2px solid #f0f0f0;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  color: #6c757d;
+  width: 100%;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #dee2e6;
+}
+
+.footer {
+  background-color: #343a40;
+  color: #f8f9fa;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer h5 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.footer address p {
+  margin-bottom: 0.5rem;
+}
+
+.social-link {
+  color: #f8f9fa;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: #0d6efd;
+}
+
+/* Login Page Styling */
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Team Logo Styling */
+.team-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin: 0 10px;
+}
+
+.fixture-header-overlay {
+  text-align: center;
+}
+
+/* Logo Management Styling */
+#logo-list img {
+  object-fit: contain;
+}
+
+/* Media queries */
+@media (max-width: 767px) {
+  .college-logo img, .my-logo img {
+      height: 60px;
+  }
+  .college-logo {
+      top: 10px;
+      left: 10px;
+  }
+  .my-logo {
+      top: 10px;
+      right: 10px;
+  }
+  .hero-section {
+      padding: 4rem 0;
+  }
+  .footer .col-md-4 {
+      margin-bottom: 2rem;
+  }
+}

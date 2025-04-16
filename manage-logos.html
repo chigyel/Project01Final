@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Team Logos - Sports Fixtures Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem('loggedInUser') || JSON.parse(localStorage.getItem('loggedInUser')).role !== 'admin') {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1>Manage Team Logos</h1>
+      <div>
+        <a href="index.html" class="btn btn-secondary me-2">Back to Fixtures</a>
+        <button class="btn btn-danger" id="logout-btn">Logout</button>
+      </div>
+    </div>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <h5>Add New Logo</h5>
+        <form id="add-logo-form">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="team-name" class="form-label">Team Name</label>
+              <input type="text" class="form-control" id="team-name" placeholder="Enter team name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="logo-url" class="form-label">Logo URL</label>
+              <input type="url" class="form-control" id="logo-url" placeholder="Enter logo URL" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Logo</button>
+        </form>
+      </div>
+    </div>
+    <div class="row" id="logo-list"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="manage-logos.js"></script>
+</body>
+</html>

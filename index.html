@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Fixtures Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem('loggedInUser')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <div class="hero-section text-center">
+    <div class="container position-relative">
+      <div class="college-logo">
+        <img src="logo.png" alt="College Logo">
+        <img src="volley.png" alt="College Logo 2" class="ms-2">
+      </div>
+      <div class="my-logo">
+        <img src="kangtsey.png" alt="My Logo">
+        <img src="basket.png" alt="My Logo 2" class="ms-2">
+      </div>
+      <h1 class="display-4 fw-bold">CST SPORTS</h1>
+      <p class="lead">All your sports fixtures in one place!</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <ul class="nav nav-tabs" id="sportTabs">
+        <li class="nav-item">
+          <a class="nav-link active sport-tab" data-sport="football" href="#football">
+            <i class="fas fa-futbol me-2"></i>Football
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sport-tab" data-sport="volleyball" href="#volleyball">
+            <i class="fas fa-volleyball-ball me-2"></i>Volleyball
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sport-tab" data-sport="basketball" href="#basketball">
+            <i class="fas fa-basketball-ball me-2"></i>Basketball
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sport-tab" data-sport="futsal" href="#futsal">
+            <i class="fas fa-futbol me-2"></i>Futsal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sport-tab" data-sport="all" href="#all">
+            <i class="fas fa-list me-2"></i>All Fixtures
+          </a>
+        </li>
+      </ul>
+      <div>
+        <a href="manage-logos.html" class="btn btn-secondary me-2" id="manage-logos-btn" style="display: none;">Manage Logos</a>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFixtureModal" id="add-fixture-btn" style="display: none;">
+          <i class="fas fa-plus me-2"></i>Add Fixture
+        </button>
+        <button class="btn btn-danger ms-2" id="logout-btn">Logout</button>
+      </div>
+    </div>
+    <div id="football-content" class="sport-content active">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Football Fixtures</h2>
+        <div class="btn-group gender-toggle-group" role="group" aria-label="Gender Selection">
+          <button type="button" class="btn btn-primary gender-toggle active" data-sport="football" data-gender="mens">Men's</button>
+          <button type="button" class="btn btn-outline-primary gender-toggle" data-sport="football" data-gender="womens">Women's</button>
+        </div>
+      </div>
+      <div id="football-mens" class="gender-content active">
+        <div class="row" id="football-mens-fixtures"></div>
+      </div>
+      <div id="football-womens" class="gender-content">
+        <div class="row" id="football-womens-fixtures"></div>
+      </div>
+    </div>
+    <div id="volleyball-content" class="sport-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Volleyball Fixtures</h2>
+        <div class="btn-group gender-toggle-group" role="group" aria-label="Gender Selection">
+          <button type="button" class="btn btn-primary gender-toggle active" data-sport="volleyball" data-gender="mens">Men's</button>
+          <button type="button" class="btn btn-outline-primary gender-toggle" data-sport="volleyball" data-gender="womens">Women's</button>
+        </div>
+      </div>
+      <div id="volleyball-mens" class="gender-content active">
+        <div class="row" id="volleyball-mens-fixtures"></div>
+      </div>
+      <div id="volleyball-womens" class="gender-content">
+        <div class="row" id="volleyball-womens-fixtures"></div>
+      </div>
+    </div>
+    <div id="basketball-content" class="sport-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Basketball Fixtures</h2>
+        <div class="btn-group gender-toggle-group" role="group" aria-label="Gender Selection">
+          <button type="button" class="btn btn-primary gender-toggle active" data-sport="basketball" data-gender="mens">Men's</button>
+          <button type="button" class="btn btn-outline-primary gender-toggle" data-sport="basketball" data-gender="womens">Women's</button>
+        </div>
+      </div>
+      <div id="basketball-mens" class="gender-content active">
+        <div class="row" id="basketball-mens-fixtures"></div>
+      </div>
+      <div id="basketball-womens" class="gender-content">
+        <div class="row" id="basketball-womens-fixtures"></div>
+      </div>
+    </div>
+    <div id="futsal-content" class="sport-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Futsal Fixtures</h2>
+        <div class="btn-group gender-toggle-group" role="group" aria-label="Gender Selection">
+          <button type="button" class="btn btn-primary gender-toggle active" data-sport="futsal" data-gender="mens">Men's</button>
+          <button type="button" class="btn btn-outline-primary gender-toggle" data-sport="futsal" data-gender="womens">Women's</button>
+        </div>
+      </div>
+      <div id="futsal-mens" class="gender-content active">
+        <div class="row" id="futsal-mens-fixtures"></div>
+      </div>
+      <div id="futsal-womens" class="gender-content">
+        <div class="row" id="futsal-womens-fixtures"></div>
+      </div>
+    </div>
+    <div id="all-content" class="sport-content">
+      <h2>All Fixtures</h2>
+      <div class="row" id="all-fixtures"></div>
+    </div>
+  </div>
+  <footer class="footer mt-5 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <address>
+            <p><i class="fas fa-map-marker-alt me-2"></i>V92V+3HQ, Phuentsholing, Chhukha</p>
+            <p><i class="fas fa-phone me-2"></i>(+975) 17160538</p>
+            <p><i class="fas fa-envelope me-2"></i>Email: info(dot)cst@rub(dot)edu(dot)bt</p>
+          </address>
+        </div>
+        <div class="col-md-4">
+          <h5>Connect With Us</h5>
+          <a href="https://www.facebook.com/CSTfootballArena" class="social-link" target="_blank">
+            <i class="fab fa-facebook-square me-2"></i>College Football Facebook Page
+          </a>
+          <br>
+          <a href="https://www.facebook.com/profile.php?id=61552378951280" class="social-link" target="_blank">
+            <i class="fab fa-facebook-square me-2"></i>College Volleyball Facebook Page
+          </a>
+          <br>
+          <a href="https://www.facebook.com/CSTBASKETBALL" class="social-link" target="_blank">
+            <i class="fab fa-facebook-square me-2"></i>College Basketball Facebook Page
+          </a>
+        </div>
+        <div class="col-md-4">
+          <h5>Sports Office Hours</h5>
+          <p>Monday - Friday: 4:00 PM - 10:00 PM</p>
+          <p>Saturday - Sunday: 6:00 AM - 10:00 PM</p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <p class="mb-0">&copy; 2025 College Sports Team. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="modal fade" id="addFixtureModal" tabindex="-1" aria-labelledby="addFixtureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addFixtureModalLabel">Add New Fixture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-fixture-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fixture-sport" class="form-label">Sport</label>
+                <select id="fixture-sport" class="form-select" required>
+                  <option value="football">Football</option>
+                  <option value="volleyball">Volleyball</option>
+                  <option value="basketball">Basketball</option>
+                  <option value="futsal">Futsal</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="fixture-gender" class="form-label">Category</label>
+                <select id="fixture-gender" class="form-select" required>
+                  <option value="mens">Men's</option>
+                  <option value="womens">Women's</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="fixture-team1" class="form-label">Team 1</label>
+                <select id="fixture-team1" class="form-select" required>
+                  <option value="">Select Team</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="fixture-team2" class="form-label">Team 2</label>
+                <select id="fixture-team2" class="form-select" required>
+                  <option value="">Select Team</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="fixture-date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="fixture-date" required>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="fixture-time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="fixture-time" required>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="fixture-venue" class="form-label">Venue</label>
+                <select id="fixture-venue" class="form-select" required>
+                  <option value="">Select a venue</option>
+                  <option value="Football Ground">Football Ground</option>
+                  <option value="Outdoor Basketball Ground">Outdoor Basketball Ground</option>
+                  <option value="Indoor Basketball Ground">Indoor Basketball Ground</option>
+                  <option value="Volleyball Ground 1">Volleyball Ground 1</option>
+                  <option value="Volleyball Ground 2">Volleyball Ground 2</option>
+                  <option value="Futsal Ground 1">Futsal Ground 1</option>
+                  <option value="Futsal Ground 2">Futsal Ground 2</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>Add Fixture
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmModalLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this fixture?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="updateScoreModal" tabindex="-1" aria-labelledby="updateScoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateScoreModalLabel">Update Score</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row align-items-center mb-3">
+            <div class="col-5 text-center">
+              <img id="score-team1-logo" src="" alt="Team 1 logo" class="team-logo mb-2" style="width: 50px; height: 50px;">
+              <h6 id="score-team1-name"></h6>
+              <input type="number" class="form-control" id="team1-score" min="0" required>
+            </div>
+            <div class="col-2 text-center">
+              <h5>VS</h5>
+            </div>
+            <div class="col-5 text-center">
+              <img id="score-team2-logo" src="" alt="Team 2 logo" class="team-logo mb-2" style="width: 50px; height: 50px;">
+              <h6 id="score-team2-name"></h6>
+              <input type="number" class="form-control" id="team2-score" min="0" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="match-status" class="form-label">Match Status</label>
+            <select id="match-status" class="form-select" required>
+              <option value="not_started">Not Started</option>
+              <option value="live">Live</option>
+              <option value="final">Final</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="confirmScoreUpdateBtn">Update Score</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
